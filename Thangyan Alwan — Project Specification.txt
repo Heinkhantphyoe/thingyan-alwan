@@ -1,0 +1,351 @@
+Thangyan Alwan — Project Specification
+1. Project Overview
+
+Thangyan Alwan is a high-performance web application that recreates the nostalgic feeling of the Myanmar Water Festival (Thingyan). The application focuses on audio nostalgia, cultural memories, and traditional knowledge through a modern and elegant interface.
+
+The app must be fast, lightweight, responsive, and emotionally engaging, delivering a smooth digital experience inspired by traditional Thingyan celebrations.
+
+2. Tech Stack
+Frontend
+
+React.js (Vite)
+
+Tailwind CSS
+
+Framer Motion
+
+React Player
+
+Backend
+
+Supabase
+
+Authentication
+
+PostgreSQL Database
+
+Storage
+
+Deployment
+
+Frontend: Vercel or Netlify
+
+Backend: Supabase
+
+3. Design System
+Color Palette
+
+Padauk Yellow
+#FFD54F
+
+Water Blue
+#4FC3F7
+
+Soft Background
+#F9FAFB
+
+Dark Text
+#1F2937
+
+Typography
+
+Headings
+Modern sans-serif (e.g. Inter / Poppins)
+
+Body text
+Clean readable sans-serif
+
+UI Vibe
+
+Elegant
+
+Clean
+
+Emotional
+
+Nostalgic
+
+Minimal but visually rich
+
+Animation Rules
+
+Use Framer Motion for:
+
+fade-in content
+
+slide-up transitions
+
+subtle hover effects
+
+gentle pulse animation for playing music
+
+Avoid heavy physics animations.
+
+4. Application Modules
+Module 1: Immersive Thangyan Player
+Description
+
+A premium audio player that streams classic Thingyan songs from Supabase storage.
+
+Features
+
+Play / Pause
+
+Next / Previous track
+
+Auto-play playlist
+
+Progress bar with drag
+
+Song cover display
+
+Song title + artist
+
+Loop / Shuffle
+
+Gentle pulse animation when music is playing
+
+Audio Source
+
+Audio files stored in Supabase Storage bucket
+
+Example bucket
+
+thangyan-songs
+UI Layout
+
+Top section:
+
+Song Cover
+Song Title
+Artist
+
+Middle section
+
+Progress Bar
+
+Bottom controls
+
+Previous | Play | Next
+Shuffle | Loop
+Module 2: Digital Memory Archive (Memory Wall)
+Description
+
+A gallery where users can upload Thingyan memories, including photos and personal stories.
+
+Features
+
+Grid layout memory wall
+
+Upload photo + story
+
+Lazy loaded images
+
+Real-time updates from Supabase
+
+View memory details in modal
+
+Like / reaction (optional)
+
+Memory Card Layout
+Photo
+Title
+Short story preview
+Date
+
+Clicking the card opens full story modal.
+
+Upload Flow
+
+User uploads image
+
+Image stored in Supabase Storage
+
+Image URL saved in PostgreSQL
+
+Memory wall updates in real time
+
+Module 3: Tradition Hub
+Description
+
+An educational section that explains Thingyan traditions.
+
+Sections
+Thangyan Sar
+
+Daily horoscope predictions for the festival period.
+
+Displayed in accordion components.
+
+Example:
+
+Monday Born
+Prediction text
+Mont Lone Yay Paw Recipe
+
+Traditional Thingyan snack.
+
+Display:
+
+Ingredients
+Step-by-step cooking instructions
+Photos
+5. Background Aesthetic
+Padauk Rain Animation
+
+A subtle animated background representing falling Padauk flowers.
+
+Implementation:
+
+SVG particles
+
+Slow floating animation
+
+Low CPU usage
+
+This animation runs behind the content.
+
+6. Mobile First Design
+
+The application must feel like a native mobile app.
+
+Mobile Features
+
+Large touch targets
+Swipeable audio playlist
+Responsive memory grid
+Bottom navigation bar
+
+Breakpoints
+
+Mobile
+Tablet
+Desktop
+
+7. Supabase Database Schema
+Table: songs
+id (uuid primary key)
+title (text)
+artist (text)
+audio_url (text)
+cover_url (text)
+duration (integer)
+created_at (timestamp)
+Table: memories
+id (uuid primary key)
+user_id (uuid)
+title (text)
+story (text)
+image_url (text)
+created_at (timestamp)
+8. Supabase Storage Buckets
+Audio Files
+bucket: thangyan-songs
+Memory Images
+bucket: memory-images
+9. Authentication
+
+Users can sign in using:
+
+Email OTP
+
+Google OAuth
+
+Permissions
+
+Guest users can:
+
+View music
+
+View memories
+
+Logged-in users can:
+
+Upload memories
+
+Post stories
+
+10. Performance Requirements
+
+The app must prioritize speed and responsiveness.
+
+Rules
+
+Lazy load images
+Lazy load audio
+Optimize React rendering
+Avoid unnecessary re-renders
+Use suspense loading states
+Compress media assets
+
+11. Component Architecture
+
+Main components required:
+
+Navbar
+AudioPlayer
+Playlist
+MemoryWallGrid
+MemoryCard
+UploadMemoryModal
+TraditionAccordion
+PadaukRainBackground
+Footer
+12. Folder Structure
+
+Example project structure
+
+src
+
+components
+AudioPlayer.jsx
+MemoryCard.jsx
+MemoryWall.jsx
+UploadModal.jsx
+PadaukRain.jsx
+
+pages
+Home.jsx
+Archive.jsx
+Traditions.jsx
+
+hooks
+usePlayer.js
+useMemories.js
+
+lib
+supabaseClient.js
+
+styles
+globals.css
+13. Error Handling
+
+The UI must display clear messages for:
+
+Audio loading failure
+Image upload failure
+Network errors
+Authentication errors
+
+14. Accessibility
+
+The application should follow basic accessibility standards:
+
+Keyboard navigation
+Alt text for images
+Clear contrast between text and background
+Readable font sizes
+
+15. Final Goal
+
+The final product should feel like:
+
+A digital Thingyan memory space
+
+A nostalgic music player
+
+A cultural storytelling platform
+
+The user experience should be:
+
+Fast, elegant, emotional, and immersive.
